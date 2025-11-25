@@ -1,0 +1,16 @@
+[Unit]
+Description=CAN-FD to Ethernet Gateway
+After=network.target can.service
+Requires=can.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/gateway can0 192.168.1.100:5000
+Restart=always
+RestartSec=5
+User=root
+# Optional: Pin to CPU 2
+# CPUAffinity=2
+
+[Install]
+WantedBy=multi-user.target
